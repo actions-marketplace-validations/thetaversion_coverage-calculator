@@ -1,0 +1,22 @@
+name: "Coverage calculator"
+description: "Calculates coverage score base on lcov.info file."
+author: "thetaversion"
+
+branding:
+  icon: "box"
+  color: "purple"
+
+inputs:
+  lcov-file:
+    description: "The location of the 'lcov.info' file."
+    default: "./coverage/lcov.info"
+
+outputs:
+  score:
+    description: "The score."
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{inputs.lcov-file}}
